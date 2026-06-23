@@ -1,0 +1,26 @@
+.wide {
+  max-width: 880px;
+}
+
+.filename {
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+  word-break: break-all;
+}
+
+.frame {
+  width: 100%;
+  height: 65vh;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card-mobile);
+  background: var(--bg-app);
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  color: var(--text-muted);
+}

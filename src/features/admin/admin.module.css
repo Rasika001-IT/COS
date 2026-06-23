@@ -1,0 +1,138 @@
+/* Shared bits across the admin tabs. */
+
+.formCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  max-width: 640px;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+.label {
+  display: block;
+  font-size: var(--fs-135);
+  font-weight: 500;
+  margin-bottom: var(--sp-3);
+}
+
+.moduleGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-3);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-3);
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.panelTitle {
+  font-size: var(--fs-18, 1.05rem);
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.chips {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.chip {
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-13);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.chipActive {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.rowActions {
+  display: flex;
+  gap: var(--sp-2);
+  justify-content: flex-end;
+}
+
+.iconBtn {
+  display: inline-flex;
+  padding: 6px;
+  border-radius: var(--radius-badge);
+  color: var(--text-muted);
+}
+.iconBtn:hover {
+  background: var(--bg-app);
+  color: var(--text);
+}
+.iconBtnDanger:hover {
+  background: var(--danger-tint);
+  color: var(--danger-fg);
+}
+
+.panelHeadPad {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.userCell {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 500;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: var(--fs-13);
+}
+
+.linkRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.link {
+  flex: 1;
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--bg-app);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  font-size: var(--fs-12);
+  word-break: break-all;
+}
+
+@media (min-width: 640px) {
+  .moduleGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

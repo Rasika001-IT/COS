@@ -1,0 +1,129 @@
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-3);
+}
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-13);
+  color: var(--text-muted);
+}
+
+.desc {
+  font-size: var(--fs-14);
+  color: var(--text);
+  margin-bottom: var(--sp-4);
+}
+
+.sectionLabel {
+  display: block;
+  font-size: var(--fs-11);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-2);
+}
+
+.assignRow,
+.statusRow {
+  margin-bottom: var(--sp-4);
+}
+
+.assignees {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+.assignee {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-13);
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: var(--fs-13);
+}
+
+.blocked {
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--danger-tint);
+  color: var(--danger-fg);
+  border-radius: var(--radius-control);
+  font-size: var(--fs-13);
+  margin-bottom: var(--sp-4);
+}
+
+.statusBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.statusBtn {
+  padding: var(--sp-2) var(--sp-4);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-13);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.statusBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.statusBtnActive {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+.statusBtnActive:hover {
+  color: #fff;
+}
+
+.comments {
+  border-top: 1px solid var(--border);
+  padding-top: var(--sp-4);
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+.comment {
+  display: flex;
+  gap: var(--sp-2);
+}
+.commentHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.commentAuthor {
+  font-size: var(--fs-13);
+  font-weight: 600;
+}
+.commentTime {
+  font-size: var(--fs-11);
+  color: var(--text-muted);
+}
+.commentBody {
+  font-size: var(--fs-13);
+  color: var(--text);
+}
+
+.addComment {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+}
+.addComment > :first-child {
+  flex: 1;
+}

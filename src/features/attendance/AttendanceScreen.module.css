@@ -1,0 +1,133 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.title {
+  font-size: var(--fs-26);
+}
+.sub {
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--card-gap);
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.history {
+  overflow: hidden;
+}
+
+.historyHead,
+.liveHead {
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid var(--border);
+}
+.liveHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0 0 var(--sp-3);
+}
+.liveIcon {
+  color: var(--color-primary);
+}
+
+.historyTitle {
+  font-size: var(--fs-16);
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 64px 1fr auto auto;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5);
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-14);
+}
+.row:last-child {
+  border-bottom: none;
+}
+
+.date {
+  font-weight: 600;
+}
+.times {
+  color: var(--text-muted);
+  font-size: var(--fs-13);
+}
+.hours {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  min-width: 48px;
+  text-align: right;
+}
+
+/* Supervisor live */
+.live {
+  display: flex;
+  flex-direction: column;
+}
+.liveGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-5);
+}
+.liveCount {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-28);
+  line-height: 1;
+}
+.liveLabel {
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+.peopleList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.person {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-13);
+}
+.in {
+  color: var(--success-fg);
+  flex-shrink: 0;
+}
+.out {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 360px 1fr;
+    align-items: start;
+  }
+}

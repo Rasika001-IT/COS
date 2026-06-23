@@ -1,0 +1,110 @@
+/*
+ * Construct OS — design tokens.
+ * EXACT values pulled from the three canonical Figma frames (SCR-01, SCR-Home,
+ * SCR-Dash) via get_design_context — see MIGRATION_PLAN.md §C.1.
+ *
+ * This is the SINGLE source of style values. Every component reads these vars,
+ * so theming / whitelabel is a token swap, not a component rewrite (guard (f)).
+ */
+:root {
+  /* ---- Brand / accent ---- */
+  --color-primary: #c85103;        /* brand orange: buttons, links, active nav, accents */
+  --color-primary-hover: #b0470a;  /* derived darker orange for :hover/:active */
+  --color-primary-tint: #f7ede0;   /* site-selector pill bg, soft orange surfaces */
+  --color-hero: #f7f0e5;           /* login cream hero panel */
+  --color-chart-bar: #dbb28c;      /* inactive chart bars (active bar = --color-primary) */
+
+  /* ---- Neutrals — light ---- */
+  --bg-app: #f6f6f8;               /* page background, neutral pill bg (To Do / Open) */
+  --surface: #ffffff;              /* cards, top bar */
+  --border: #e5e5eb;               /* default card / divider border */
+  --border-input: #e2e2e7;         /* login input border (1.5px) */
+  --track: #e8e8ed;                /* progress-bar track, chart gridlines */
+
+  /* ---- Neutrals — dark ---- */
+  --sidebar-bg: #161619;           /* desktop sidebar */
+  --surface-dark: #1b1b1f;         /* check-in hero card, avatar circle */
+  --sidebar-active: #29292e;       /* active sidebar item bg */
+  --sidebar-divider: #2e2e33;      /* sidebar dividers */
+
+  /* ---- Text ---- */
+  --text: #1b1b1f;                 /* primary text */
+  --text-muted: #70737d;           /* secondary text, labels */
+  --text-on-dark: #9e9ea8;         /* inactive sidebar text */
+  --text-on-dark-muted: #c7c7d1;   /* dark-card subtext */
+  --text-eyebrow-dark: #c78c66;    /* "NOT CHECKED IN" eyebrow on dark card */
+  --text-on-primary: #ffffff;      /* text on orange */
+
+  /* ---- Status (semantic) — fg + tint pairs ---- */
+  --success-fg: #21994d;  --success-tint: #e8f5eb;  /* On track / Present / +delta */
+  --info-fg: #296beb;     --info-tint: #e8f0fc;     /* In Progress / Task completion */
+  --warning-fg: #d98c0d;  --warning-tint: #fcf2d9;  /* At risk / Assigned / SLA */
+  --danger-fg: #d43333;   --danger-tint: #fcebeb;   /* Blocked / Delayed / Escalated */
+
+  /* ---- Radii ---- */
+  --radius-badge: 8px;
+  --radius-control: 10px;   /* button / sidebar item / search */
+  --radius-input: 12px;     /* login input/button */
+  --radius-card-mobile: 14px;
+  --radius-card: 16px;      /* web card / KPI / site pill */
+  --radius-hero: 18px;      /* dark hero card / avatar square */
+  --radius-pill: 20px;      /* status pill */
+  --radius-full: 999px;     /* avatars */
+
+  /* ---- Shadows ---- */
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-hero: 0 4px 14px rgba(0, 0, 0, 0.06);
+
+  /* ---- Layout ---- */
+  --sidebar-w: 248px;
+  --topbar-h: 72px;
+  --mobile-header-h: 92px;
+  --bottomnav-h: 70px;
+  --gutter-mobile: 20px;
+  --gutter-login: 28px;
+  --gutter-web: 32px;
+  --card-gap: 24px;
+  --content-max: 1200px;
+
+  /* ---- Typography ---- */
+  /* Single heading token (guard: reversible Oswald->Inter switch is one line). */
+  --font-heading: 'Oswald', system-ui, sans-serif;
+  --font-body: 'Roboto', system-ui, -apple-system, sans-serif;
+
+  /* Type scale (px from the frames): 10 11 12 13 13.5 14 14.5 15 16 20 22 26 28 34 */
+  --fs-10: 0.625rem;
+  --fs-11: 0.6875rem;
+  --fs-12: 0.75rem;
+  --fs-13: 0.8125rem;
+  --fs-135: 0.84375rem;
+  --fs-14: 0.875rem;
+  --fs-145: 0.90625rem;
+  --fs-15: 0.9375rem;
+  --fs-16: 1rem;
+  --fs-20: 1.25rem;
+  --fs-22: 1.375rem;
+  --fs-26: 1.625rem;
+  --fs-28: 1.75rem;
+  --fs-34: 2.125rem;
+
+  /* ---- Spacing scale (4px base) ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur: 160ms;
+
+  /* ---- z-index ---- */
+  --z-banner: 50;
+  --z-sticky: 100;
+  --z-nav: 200;
+  --z-modal: 1000;
+  --z-toast: 1100;
+}

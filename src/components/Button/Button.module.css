@@ -1,0 +1,88 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+}
+
+/* sizes */
+.sm {
+  height: 36px;
+  padding: 0 var(--sp-3);
+  font-size: var(--fs-13);
+}
+.md {
+  height: 44px;
+  padding: 0 var(--sp-5);
+  font-size: var(--fs-15);
+}
+.lg {
+  height: 52px;
+  padding: 0 var(--sp-6);
+  font-size: var(--fs-16);
+}
+
+.full {
+  width: 100%;
+}
+
+/* variants */
+.primary {
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+}
+.primary:not(:disabled):hover {
+  background: var(--color-primary-hover);
+}
+
+.secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+}
+.secondary:not(:disabled):hover {
+  border-color: var(--text-muted);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-muted);
+}
+.ghost:not(:disabled):hover {
+  background: var(--bg-app);
+  color: var(--text);
+}
+
+.danger {
+  background: var(--danger-fg);
+  color: #fff;
+}
+.danger:not(:disabled):hover {
+  filter: brightness(0.94);
+}
+
+.spinner {
+  position: absolute;
+  animation: spin 0.7s linear infinite;
+}
+
+.hiddenLabel {
+  visibility: hidden;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

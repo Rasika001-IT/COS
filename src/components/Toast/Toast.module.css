@@ -1,0 +1,67 @@
+.viewport {
+  position: fixed;
+  z-index: var(--z-toast);
+  bottom: calc(var(--bottomnav-h) + var(--sp-4));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  width: min(420px, calc(100vw - var(--sp-8)));
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .viewport {
+    bottom: var(--sp-6);
+    left: auto;
+    right: var(--sp-6);
+    transform: none;
+  }
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--surface-dark);
+  color: #fff;
+  border-radius: var(--radius-control);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  pointer-events: auto;
+  animation: slideIn var(--dur) var(--ease);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+.success .icon {
+  color: #5fd68a;
+}
+.error .icon {
+  color: #ff8585;
+}
+.info .icon {
+  color: #8fb4ff;
+}
+
+.msg {
+  flex: 1;
+  font-size: var(--fs-14);
+}
+
+.close {
+  color: var(--text-on-dark);
+  display: inline-flex;
+}
+.close:hover {
+  color: #fff;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}

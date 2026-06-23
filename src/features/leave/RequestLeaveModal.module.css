@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3);
+  background: var(--color-primary-tint);
+  border-radius: var(--radius-control);
+  font-size: var(--fs-14);
+}
+.summary strong {
+  font-family: var(--font-heading);
+  font-size: var(--fs-16);
+  color: var(--color-primary);
+}
+.balance {
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+
+.quick {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-12);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+.quick:hover {
+  text-decoration: underline;
+}

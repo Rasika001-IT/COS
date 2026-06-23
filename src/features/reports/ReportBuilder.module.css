@@ -1,0 +1,150 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-13);
+  font-weight: 500;
+  color: var(--text-muted);
+  width: fit-content;
+}
+.back:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: var(--fs-26);
+}
+
+.dateInput {
+  width: auto;
+}
+
+.sub {
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+}
+
+/* Shift tabs */
+.shiftTabs {
+  display: flex;
+  gap: var(--sp-2);
+  padding: var(--sp-1);
+  background: var(--bg-app);
+  border-radius: var(--radius-card-mobile);
+  width: fit-content;
+}
+.shiftTab {
+  padding: var(--sp-2) var(--sp-5);
+  border-radius: var(--radius-control);
+  font-size: var(--fs-13);
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--text-muted);
+}
+.shiftTabActive {
+  background: var(--surface);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.supCard {
+  max-width: 420px;
+}
+
+.copyRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Footer: mode + generate */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  padding-top: var(--sp-4);
+}
+
+.modeWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.modeLabel {
+  font-size: var(--fs-11);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.modeTabs {
+  display: flex;
+  gap: 2px;
+  padding: var(--sp-1);
+  background: var(--bg-app);
+  border-radius: var(--radius-control);
+}
+.modeTab {
+  padding: var(--sp-2) var(--sp-5);
+  border-radius: var(--radius-badge);
+  font-size: var(--fs-12);
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--text-muted);
+}
+.modeTabActive {
+  background: var(--surface);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+/* Rollup */
+.rollupTitle {
+  font-size: var(--fs-18, 1.05rem);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  margin-bottom: var(--sp-1);
+}
+.rollupTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--sp-4);
+}
+.rollupTable td {
+  padding: var(--sp-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.rollupMetric {
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+}
+.rollupValue {
+  text-align: right;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-16);
+}

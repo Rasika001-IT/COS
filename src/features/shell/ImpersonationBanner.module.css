@@ -1,0 +1,36 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--surface-dark);
+  color: #fff;
+  font-size: var(--fs-13);
+  z-index: var(--z-banner);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.label strong {
+  color: var(--color-primary);
+}
+
+.exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-12);
+  font-weight: 600;
+}
+.exit:hover {
+  background: var(--color-primary);
+}

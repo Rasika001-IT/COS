@@ -1,0 +1,81 @@
+.wrap {
+  position: relative;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 40px;
+  padding: 0 var(--sp-3);
+  background: var(--color-primary-tint);
+  border-radius: var(--radius-card);
+  font-size: var(--fs-14);
+  font-weight: 500;
+  color: var(--text);
+  max-width: 220px;
+}
+
+.pin {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  color: var(--text-muted);
+  transition: transform var(--dur) var(--ease);
+  flex-shrink: 0;
+}
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: var(--z-sticky);
+  min-width: 260px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+  padding: var(--sp-1);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-control);
+  text-align: left;
+}
+.option:hover {
+  background: var(--bg-app);
+}
+
+.optBody {
+  display: flex;
+  flex-direction: column;
+}
+.optName {
+  font-size: var(--fs-14);
+  font-weight: 500;
+}
+.optLoc {
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+.tick {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}

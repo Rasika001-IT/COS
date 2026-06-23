@@ -1,0 +1,34 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-heading);
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--fs-20);
+  border-radius: var(--radius-control);
+}
+
+.word {
+  font-weight: 600;
+  font-size: var(--fs-16);
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.os {
+  color: var(--color-primary);
+}
+
+.onDark .word {
+  color: #fff;
+}

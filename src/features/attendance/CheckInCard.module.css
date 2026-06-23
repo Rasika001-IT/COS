@@ -1,0 +1,48 @@
+.card {
+  background: var(--surface-dark);
+  border-radius: var(--radius-hero);
+  box-shadow: var(--shadow-hero);
+  padding: var(--sp-5);
+  color: var(--text-on-dark-muted);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.eyebrow {
+  font-size: var(--fs-11);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-eyebrow-dark);
+}
+
+.site {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-12);
+  color: var(--text-on-dark);
+}
+
+.big {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-34);
+  line-height: 1.05;
+  color: #fff;
+  margin-top: var(--sp-4);
+}
+
+.sub {
+  font-size: var(--fs-13);
+  color: var(--text-on-dark);
+  margin-top: var(--sp-1);
+}
+
+.btn {
+  margin-top: var(--sp-5);
+}

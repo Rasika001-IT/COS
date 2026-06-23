@@ -1,0 +1,39 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-12);
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: currentColor;
+}
+
+.neutral {
+  background: var(--bg-app);
+  color: var(--text-muted);
+}
+.success {
+  background: var(--success-tint);
+  color: var(--success-fg);
+}
+.info {
+  background: var(--info-tint);
+  color: var(--info-fg);
+}
+.warning {
+  background: var(--warning-tint);
+  color: var(--warning-fg);
+}
+.danger {
+  background: var(--danger-tint);
+  color: var(--danger-fg);
+}

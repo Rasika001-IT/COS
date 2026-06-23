@@ -1,0 +1,28 @@
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-3);
+  padding-top: var(--sp-6);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: var(--success-tint);
+  color: var(--success-fg);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--sp-2);
+}
+
+.action {
+  width: 100%;
+  margin-top: var(--sp-4);
+}
+.action:hover {
+  text-decoration: none;
+}

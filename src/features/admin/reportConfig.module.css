@@ -1,0 +1,102 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.row {
+  overflow: hidden;
+}
+
+.rowHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+}
+
+.expandBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+}
+.chev {
+  color: var(--text-muted);
+  transition: transform var(--dur) var(--ease);
+  flex-shrink: 0;
+}
+.chevOpen {
+  transform: rotate(180deg);
+}
+.name {
+  display: block;
+  font-weight: 600;
+  font-size: var(--fs-15);
+}
+.desc {
+  display: block;
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+  border-top: 1px solid var(--border);
+  background: var(--bg-app);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.groupLabel {
+  font-size: var(--fs-11);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.roleChips {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.roleChip {
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-13);
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--text-muted);
+}
+.roleChipOn {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-3);
+  background: var(--surface);
+  padding: var(--sp-4);
+  border-radius: var(--radius-card-mobile);
+}
+
+@media (min-width: 640px) {
+  .fields {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,145 @@
+.board {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 1fr);
+  gap: var(--sp-3);
+  overflow-x: auto;
+  padding-bottom: var(--sp-2);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  background: var(--bg-app);
+  border-radius: var(--radius-card-mobile);
+  padding: var(--sp-3);
+  min-height: 120px;
+}
+
+.colHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.count {
+  font-size: var(--fs-12);
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.colBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card-mobile);
+  box-shadow: var(--shadow-card);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-3);
+  padding-right: 32px;
+  text-align: left;
+}
+
+.cardTitle {
+  font-size: var(--fs-14);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.blockReason {
+  font-size: var(--fs-12);
+  color: var(--danger-fg);
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+.due {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+
+.assignees {
+  display: flex;
+}
+.assignees > * + * {
+  margin-left: -6px;
+}
+
+.menuWrap {
+  position: absolute;
+  top: var(--sp-2);
+  right: var(--sp-2);
+}
+
+.menuBtn {
+  display: inline-flex;
+  color: var(--text-muted);
+  padding: 2px;
+  border-radius: var(--radius-badge);
+}
+.menuBtn:hover {
+  background: var(--bg-app);
+  color: var(--text);
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: var(--z-sticky);
+  min-width: 150px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  padding: var(--sp-1);
+}
+
+.menuLabel {
+  display: block;
+  padding: var(--sp-1) var(--sp-2);
+  font-size: var(--fs-10);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.menuItem {
+  display: block;
+  width: 100%;
+  padding: var(--sp-2);
+  text-align: left;
+  font-size: var(--fs-13);
+  border-radius: var(--radius-badge);
+}
+.menuItem:hover {
+  background: var(--bg-app);
+}
+
+.empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: var(--sp-2);
+}

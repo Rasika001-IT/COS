@@ -1,0 +1,113 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.heading {
+  font-size: var(--fs-15);
+  font-weight: 600;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card-mobile);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-13);
+}
+
+.table th {
+  text-align: left;
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-11);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  background: var(--bg-app);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--sp-2);
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.cellInput,
+.cellSelect {
+  width: 100%;
+  min-width: 90px;
+  height: 36px;
+  padding: 0 var(--sp-2);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-badge);
+  font-size: var(--fs-13);
+  background: var(--surface);
+}
+.cellInput:focus,
+.cellSelect:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+.cellSelect {
+  cursor: pointer;
+}
+
+.computed {
+  display: inline-block;
+  min-width: 60px;
+  padding: 4px 8px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  border-radius: var(--radius-badge);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.sr {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.strong {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.actionCol {
+  width: 40px;
+  text-align: center;
+}
+
+.del {
+  color: var(--text-muted);
+  padding: 6px;
+  border-radius: var(--radius-badge);
+}
+.del:hover {
+  color: var(--danger-fg);
+  background: var(--danger-tint);
+}
+
+.empty {
+  padding: var(--sp-5);
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}

@@ -1,0 +1,79 @@
+.cal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.monthLabel {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-16);
+}
+
+.dow,
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--sp-1);
+}
+
+.dow span {
+  text-align: center;
+  font-size: var(--fs-11);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: var(--radius-badge);
+  font-size: var(--fs-12);
+  font-weight: 500;
+}
+.empty {
+  aspect-ratio: 1;
+}
+
+.present {
+  background: var(--success-tint);
+  color: var(--success-fg);
+}
+.absent {
+  background: var(--danger-tint);
+  color: var(--danger-fg);
+}
+.half {
+  background: var(--warning-tint);
+  color: var(--warning-fg);
+}
+.leave {
+  background: var(--track);
+  color: var(--text-muted);
+}
+.future,
+.none {
+  background: var(--bg-app);
+  color: var(--text-muted);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-1);
+}
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}

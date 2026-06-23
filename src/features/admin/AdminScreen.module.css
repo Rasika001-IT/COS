@@ -1,0 +1,50 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.title {
+  font-size: var(--fs-26);
+}
+.sub {
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+}
+
+.tabs {
+  display: flex;
+  gap: var(--sp-1);
+  padding: var(--sp-1);
+  background: var(--bg-app);
+  border-radius: var(--radius-card-mobile);
+  overflow-x: auto;
+  width: fit-content;
+  max-width: 100%;
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--radius-control);
+  font-size: var(--fs-13);
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.tabActive {
+  background: var(--surface);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}

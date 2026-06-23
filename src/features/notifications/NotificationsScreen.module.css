@@ -1,0 +1,119 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+.title {
+  font-size: var(--fs-26);
+}
+.sub {
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+}
+
+.chips {
+  display: flex;
+  gap: var(--sp-2);
+}
+.chip {
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-13);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.chipActive {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.item {
+  padding: 0;
+  overflow: hidden;
+}
+.unread {
+  border-color: var(--color-primary);
+}
+
+.hit {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  text-align: left;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: var(--radius-control);
+}
+.tone_neutral { background: var(--bg-app); color: var(--text-muted); }
+.tone_success { background: var(--success-tint); color: var(--success-fg); }
+.tone_info { background: var(--info-tint); color: var(--info-fg); }
+.tone_warning { background: var(--warning-tint); color: var(--warning-fg); }
+.tone_danger { background: var(--danger-tint); color: var(--danger-fg); }
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.itemTitle {
+  font-size: var(--fs-14);
+  font-weight: 600;
+}
+.itemBody {
+  font-size: var(--fs-13);
+  color: var(--text-muted);
+}
+.itemTime {
+  font-size: var(--fs-11);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  margin-top: var(--sp-2);
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+}
+
+.empty {
+  padding: var(--sp-8);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-card-mobile);
+}

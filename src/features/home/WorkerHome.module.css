@@ -1,0 +1,138 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.greet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hello {
+  font-size: var(--fs-14);
+  color: var(--text-muted);
+}
+
+.name {
+  font-size: var(--fs-26);
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: var(--surface-dark);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  border-radius: var(--radius-hero);
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--danger-tint);
+  color: var(--danger-fg);
+  border-radius: var(--radius-card-mobile);
+}
+.alert:hover {
+  text-decoration: none;
+}
+.alertText {
+  flex: 1;
+  font-size: var(--fs-13);
+}
+
+.quick {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-3);
+}
+
+.quickTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card-mobile);
+  color: var(--text);
+}
+.quickTile:hover {
+  text-decoration: none;
+  border-color: var(--color-primary);
+}
+
+.quickIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  border-radius: var(--radius-control);
+}
+
+.quickLabel {
+  font-size: var(--fs-12);
+  font-weight: 500;
+  text-align: center;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-3);
+}
+
+.sectionTitle {
+  font-size: var(--fs-20);
+}
+
+.count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font-size: var(--fs-12);
+  font-weight: 700;
+  border-radius: var(--radius-full);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.empty {
+  padding: var(--sp-6);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-card-mobile);
+}
+
+@media (min-width: 900px) {
+  .quick {
+    gap: var(--sp-4);
+  }
+}

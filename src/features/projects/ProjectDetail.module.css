@@ -1,0 +1,116 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-13);
+  font-weight: 500;
+  color: var(--text-muted);
+  width: fit-content;
+}
+.back:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+.headTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+.name {
+  font-size: var(--fs-26);
+}
+.client {
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+}
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.factLabel {
+  font-size: var(--fs-11);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.factValue {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-16);
+}
+
+.sectionTitle {
+  font-size: var(--fs-20);
+  margin-bottom: var(--sp-3);
+}
+
+.sites {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-3);
+}
+
+.siteLink:hover {
+  text-decoration: none;
+}
+.siteCard {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  transition: border-color var(--dur) var(--ease);
+}
+.siteLink:hover .siteCard {
+  border-color: var(--color-primary);
+}
+.siteBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.siteName {
+  font-size: var(--fs-15);
+  font-weight: 600;
+}
+.siteLoc {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-13);
+  color: var(--text-muted);
+}
+.chev {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .facts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .sites {
+    grid-template-columns: 1fr 1fr;
+  }
+}

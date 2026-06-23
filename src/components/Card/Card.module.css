@@ -1,0 +1,31 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.mobile {
+  border-radius: var(--radius-card-mobile);
+}
+
+.dark {
+  background: var(--surface-dark);
+  border: none;
+  border-radius: var(--radius-hero);
+  box-shadow: var(--shadow-hero);
+  color: var(--text-on-dark-muted);
+}
+
+.pad_none {
+  padding: 0;
+}
+.pad_sm {
+  padding: var(--sp-3);
+}
+.pad_md {
+  padding: var(--sp-5);
+}
+.pad_lg {
+  padding: var(--sp-6);
+}

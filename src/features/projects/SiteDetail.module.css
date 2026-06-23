@@ -1,0 +1,83 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-13);
+  font-weight: 500;
+  color: var(--text-muted);
+  width: fit-content;
+}
+.back:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.headTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+.name {
+  font-size: var(--fs-26);
+}
+.loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+}
+
+.supervisor {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-14);
+  font-weight: 500;
+}
+.supIcon {
+  color: var(--text-muted);
+}
+.supRole {
+  font-size: var(--fs-12);
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.tabs {
+  display: flex;
+  gap: var(--sp-2);
+  padding: var(--sp-1);
+  background: var(--bg-app);
+  border-radius: var(--radius-card-mobile);
+  width: fit-content;
+}
+.tab {
+  padding: var(--sp-2) var(--sp-5);
+  border-radius: var(--radius-control);
+  font-size: var(--fs-13);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.tabActive {
+  background: var(--surface);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.boardActions {
+  display: flex;
+  justify-content: flex-end;
+}

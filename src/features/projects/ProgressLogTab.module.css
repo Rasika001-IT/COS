@@ -1,0 +1,129 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.addBtn {
+  align-self: flex-start;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.formTitle {
+  font-size: var(--fs-16);
+}
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-3);
+}
+
+.empty {
+  padding: var(--sp-6);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--fs-14);
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-card-mobile);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding-left: var(--sp-4);
+  border-left: 2px solid var(--border);
+}
+
+.entry {
+  position: relative;
+}
+.marker {
+  position: absolute;
+  left: calc(-1 * var(--sp-4) - 6px);
+  top: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--bg-app);
+}
+
+.entryCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.entryHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+.entryWho {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.author {
+  display: block;
+  font-size: var(--fs-14);
+  font-weight: 600;
+}
+.date {
+  display: block;
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+.weather {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+
+.summary {
+  font-size: var(--fs-14);
+}
+
+.field {
+  font-size: var(--fs-13);
+  color: var(--text);
+}
+.fieldLabel {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.fieldLabelDanger {
+  font-weight: 600;
+  color: var(--danger-fg);
+}
+
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-1);
+}
+.photo {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--radius-card-mobile);
+  border: 1px solid var(--border);
+}
+
+.noPhotos {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
