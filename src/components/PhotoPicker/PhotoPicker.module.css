@@ -35,6 +35,15 @@
   object-fit: cover;
 }
 
+.spinner {
+  margin: auto;
+  color: var(--text-muted);
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .remove {
   position: absolute;
   top: 3px;
@@ -68,6 +77,10 @@
 .add:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+}
+.add:disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .input {

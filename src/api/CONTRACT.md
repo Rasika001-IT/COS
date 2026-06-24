@@ -240,6 +240,20 @@ a copyable Business-Admin signup link.
 **Login** (`§2.1 /auth/login`) is rejected with `401 UNAUTHORIZED` when the user's org `isActive === false` (suspended).
 Plans gate modules: `free` ⊂ `standard` ⊂ `pro` (see `lib/plans.ts`).
 
+### 2.13 Uploads
+File storage on Cloudflare R2 (replaces the mock-era data-URLs). Every `photos[]` /
+`logoUrl` field in this contract is a plain URL string — `PhotoPicker` calls this
+endpoint per file and stores the returned URL in the same array, so no other
+slice's request/response shapes change.
+
+| Method | Path | Body / params | Returns |
+|---|---|---|---|
+| POST | `/uploads` | `multipart/form-data`, field `file` | `{ url }` (JPG/PNG/WEBP/GIF only, ≤10 MB; `422 VALIDATION_ERROR` otherwise) |
+
+Auth-only (any authenticated role) — not admin-gated; the object key is namespaced
+by `orgId` but the *write* it ends up on (a grievance, a progress-log, `PATCH /org`)
+is gated by that endpoint's own rules as usual.
+
 ---
 
 ## 3. Later-module endpoints (stubbed — expand when those modules are built)

@@ -98,7 +98,7 @@ Barrel: `src/components/index.ts`. Status→tone maps live in `src/lib/status.ts
 |---|---|---|---|
 | **Auth + Shell (slice)** | §1, §2.1–2.6 | `features/auth`, `features/shell`, `baseApi` | Gate-3 reauth from commit 1; demo-account chips |
 | **Reports** (6 types) | §2.7 | `features/reports/` (calc.ts harvested from V1, pdf/ engine, config-driven schema) | Config-driven (guard c); Billing+Dispatch totals **diffed = V1**; Diesel landscape |
-| **Projects/Sites/Tasks** | §2.8 | `features/projects`, `features/tasks` | Task board = **status menu, no drag-drop**; blocked→reason; progress-log photos (data-URL) |
+| **Projects/Sites/Tasks** | §2.8 | `features/projects`, `features/tasks` | Task board = **status menu, no drag-drop**; blocked→reason; progress-log photos (R2-uploaded URLs, see `server/HANDOFF.md` Phase G) |
 | **Grievances** | §2.9 | `features/grievances/` | 7-state lifecycle, **Urgent** priority; anonymous→admin-only name; SLA 48h flag (no cron) |
 | **Leave & Payroll** | §2.10 | `features/leave`, `features/payroll`, `features/profile` | Reject-needs-comment; payroll export-only (PDF reuses Reports renderer, "Excel"=CSV); Profile read-only |
 | **Business Admin** | §2.11 | `features/admin/` (4 tabs) | **Invites never email** (copyable link); deactivate≠delete; closes the report-config editor loop (`features/reports/configAccess.ts`) |
@@ -121,9 +121,11 @@ routing). **Manual browser pass is the remaining sign-off per module** (see §6)
 
 All 8 planned modules are built. Remaining work is the **manual passes (§6)** plus
 these explicitly-deferred items, none started:
-- **Real backend** — delete `src/api/mocks/`, point `VITE_API_URL` at the server;
-  the contract (`CONTRACT.md`) is the spec. Slice code shouldn't change.
-- **Cloudinary** photo upload (PhotoPicker stores data-URLs today).
+- **Real backend** — being built in `server/` per `server/HANDOFF.md` (Phases
+  A–G done: auth, core domain, reports, grievances/leave/payroll, admin/superadmin,
+  R2 uploads — all verified against real Atlas + R2). MSW stays for local dev;
+  flip `VITE_ENABLE_MSW=false` to point at it. Slice code didn't change.
+- ~~Cloudinary photo upload~~ → done via Cloudflare R2 instead (`server/HANDOFF.md` §4b).
 - **Logo in PDF** — jsPDF `addImage` in `features/reports/pdf/render.ts` (PDFs use
   the org *name* today; logo is stored but not embedded).
 - **Custom Fields** builder + **leave-entitlement** editor (Business Admin).

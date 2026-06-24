@@ -1,6 +1,6 @@
 import { baseApi } from './baseApi'
 import type { Org, OrgPlan, OrgSummary, PlatformActivity, User } from '@/types'
-import { setActingUser, clearImpersonation } from '@/features/auth/authSlice'
+import { setActingUser, clearImpersonation, setAccessToken } from '@/features/auth/authSlice'
 
 // superAdminApi — CONTRACT.md §2.12. Platform control plane (superadmin only).
 
@@ -37,10 +37,13 @@ export const superAdminApi = baseApi.injectEndpoints({
       query: () => '/superadmin/dashboard',
       providesTags: ['Platform'],
     }),
-    impersonate: build.mutation<{ user: User; orgName: string }, { id: string }>({
+    impersonate: build.mutation<{ user: User; orgName: string; accessToken?: string }, { id: string }>({
       query: ({ id }) => ({ url: `/superadmin/impersonate/${id}`, method: 'POST' }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled
+        // Real backends mint a new token for the impersonated admin — swap it in
+        // BEFORE the invalidation refetches fire. (No-op against the MSW mock.)
+        if (data.accessToken) dispatch(setAccessToken(data.accessToken))
         dispatch(setActingUser({ user: data.user, orgName: data.orgName }))
       },
       // Acting as a different tenant — refresh everything.
@@ -49,10 +52,11 @@ export const superAdminApi = baseApi.injectEndpoints({
         'Grievance', 'Notification', 'Leave', 'ReportConfig', 'Master', 'Platform',
       ],
     }),
-    stopImpersonate: build.mutation<{ user: User }, void>({
+    stopImpersonate: build.mutation<{ user: User; accessToken?: string | null }, void>({
       query: () => ({ url: '/superadmin/stop-impersonate', method: 'POST' }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled
+        if (data.accessToken) dispatch(setAccessToken(data.accessToken))
         dispatch(clearImpersonation({ user: data.user }))
       },
       invalidatesTags: [
