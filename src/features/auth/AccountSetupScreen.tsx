@@ -1,8 +1,9 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Link, useNavigate } from 'react-router-dom'
-import { KeyRound, Lock } from 'lucide-react'
+import { Eye, EyeOff, KeyRound, Lock } from 'lucide-react'
 import { useAcceptInviteMutation } from '@/api/authApi'
 import { useAppDispatch } from '@/app/hooks'
 import { setCredentials } from './authSlice'
@@ -22,10 +23,20 @@ const schema = z
   .refine((v) => v.password === v.confirm, { path: ['confirm'], message: 'Passwords do not match' })
 type FormValues = z.infer<typeof schema>
 
+function EyeToggle({ visible, onToggle }: { visible: boolean; onToggle: () => void }) {
+  return (
+    <button type="button" onClick={onToggle} aria-label={visible ? 'Hide password' : 'Show password'}>
+      {visible ? <EyeOff size={18} /> : <Eye size={18} />}
+    </button>
+  )
+}
+
 export function AccountSetupScreen() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const [acceptInvite, { isLoading, error }] = useAcceptInviteMutation()
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirm, setShowConfirm] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: { token: '', password: '', confirm: '' },
@@ -47,31 +58,33 @@ export function AccountSetupScreen() {
     <AuthLayout>
       <div className={form.head}>
         <h2 className={form.title}>Set up your account</h2>
-        <p className={form.sub}>Enter the invite code from your email and choose a password.</p>
+        <p className={form.sub}>Enter the invite code you received and choose a password.</p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className={form.fields} noValidate>
         {serverMsg && <div className={form.formError}>{serverMsg}</div>}
         <Input
           label="Invite code"
-          placeholder="6-digit code"
+          placeholder="6-character code"
           leadingIcon={<KeyRound size={18} />}
           error={errors.token?.message}
           {...register('token')}
         />
         <Input
           label="New password"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           placeholder="••••••••"
           leadingIcon={<Lock size={18} />}
+          trailingAction={<EyeToggle visible={showPassword} onToggle={() => setShowPassword((v) => !v)} />}
           error={errors.password?.message}
           {...register('password')}
         />
         <Input
           label="Confirm password"
-          type="password"
+          type={showConfirm ? 'text' : 'password'}
           placeholder="••••••••"
           leadingIcon={<Lock size={18} />}
+          trailingAction={<EyeToggle visible={showConfirm} onToggle={() => setShowConfirm((v) => !v)} />}
           error={errors.confirm?.message}
           {...register('confirm')}
         />

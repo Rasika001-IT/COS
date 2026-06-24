@@ -104,7 +104,9 @@ function InviteModal({ open, onClose, sites }: { open: boolean; onClose: () => v
   const [role, setRole] = useState<Role>('worker')
   const [siteId, setSiteId] = useState('')
   const [link, setLink] = useState('')
-  const [copied, setCopied] = useState(false)
+  const [code, setCode] = useState('')
+  const [copiedLink, setCopiedLink] = useState(false)
+  const [copiedCode, setCopiedCode] = useState(false)
 
   const submit = async () => {
     if (!email.trim()) {
@@ -114,15 +116,22 @@ function InviteModal({ open, onClose, sites }: { open: boolean; onClose: () => v
     try {
       const res = await createInvite({ email: email.trim(), role, siteId: siteId || undefined }).unwrap()
       setLink(`${window.location.origin}${res.inviteLink}`)
+      setCode(res.invite.token)
     } catch {
       toast.error('Could not create the invite.')
     }
   }
 
-  const copy = () => {
+  const copyLink = () => {
     navigator.clipboard?.writeText(link)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 1500)
+    setCopiedLink(true)
+    setTimeout(() => setCopiedLink(false), 1500)
+  }
+
+  const copyCode = () => {
+    navigator.clipboard?.writeText(code)
+    setCopiedCode(true)
+    setTimeout(() => setCopiedCode(false), 1500)
   }
 
   const reset = () => {
@@ -130,6 +139,7 @@ function InviteModal({ open, onClose, sites }: { open: boolean; onClose: () => v
     setRole('worker')
     setSiteId('')
     setLink('')
+    setCode('')
     onClose()
   }
 
@@ -151,12 +161,24 @@ function InviteModal({ open, onClose, sites }: { open: boolean; onClose: () => v
     >
       {link ? (
         <div className={styles.formGrid}>
-          <p className={styles.muted}>Share this signup link with the user — the app does not send email.</p>
-          <div className={styles.linkRow}>
-            <code className={styles.link}>{link}</code>
-            <Button size="sm" variant="secondary" onClick={copy}>
-              {copied ? <Check size={15} /> : <Copy size={15} />} {copied ? 'Copied' : 'Copy'}
-            </Button>
+          <p className={styles.muted}>Share this link or code — the app does not send email.</p>
+          <div>
+            <p className={styles.muted} style={{ marginBottom: 6 }}>Invite link</p>
+            <div className={styles.linkRow}>
+              <code className={styles.link}>{link}</code>
+              <Button size="sm" variant="secondary" onClick={copyLink}>
+                {copiedLink ? <Check size={15} /> : <Copy size={15} />} {copiedLink ? 'Copied' : 'Copy'}
+              </Button>
+            </div>
+          </div>
+          <div>
+            <p className={styles.muted} style={{ marginBottom: 6 }}>Invite code</p>
+            <div className={styles.linkRow}>
+              <code className={styles.link}>{code}</code>
+              <Button size="sm" variant="secondary" onClick={copyCode}>
+                {copiedCode ? <Check size={15} /> : <Copy size={15} />} {copiedCode ? 'Copied' : 'Copy'}
+              </Button>
+            </div>
           </div>
         </div>
       ) : (

@@ -1,5 +1,10 @@
 # Construct OS V2 — Deploy (Railway backend + Vercel frontend)
 
+> **Status: live.** Backend `https://cos-production-9f6f.up.railway.app`,
+> frontend `https://cos-3yyc.vercel.app`. Login, cross-domain refresh cookie,
+> and a live R2 upload have all been curl-verified end-to-end. Details + the
+> two deploy bugs hit and fixed: `server/HANDOFF.md` §4c.
+>
 > Monorepo: backend in `server/`, frontend at repo root. Both deploy from the
 > same GitHub repo (`Rasika001-IT/COS`, branch `main`).
 >

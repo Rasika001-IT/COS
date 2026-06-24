@@ -7,10 +7,11 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string
   hint?: string
   leadingIcon?: ReactNode
+  trailingAction?: ReactNode
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { label, error, hint, leadingIcon, className, id, ...rest },
+  { label, error, hint, leadingIcon, trailingAction, className, id, ...rest },
   ref,
 ) {
   const reactId = useId()
@@ -32,6 +33,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           aria-describedby={error ? `${inputId}-err` : hint ? `${inputId}-hint` : undefined}
           {...rest}
         />
+        {trailingAction && <span className={styles.trailingAction}>{trailingAction}</span>}
       </div>
       {error ? (
         <p id={`${inputId}-err`} className={styles.error}>

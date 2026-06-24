@@ -40,6 +40,7 @@ export interface Invite {
   siteId?: string
   token: string
   createdAt: string
+  status?: 'pending' | 'accepted' | 'expired'
 }
 
 export type OrgPlan = 'free' | 'standard' | 'pro'
@@ -83,6 +84,7 @@ export interface Site {
   gps: { lat: number; lng: number }
   supervisorId: string
   isActive: boolean
+  geofenceRadius?: number // metres; default 3000 when absent
 }
 
 export type GpsStatus = 'ok' | 'unavailable' | 'manual'

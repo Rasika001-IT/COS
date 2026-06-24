@@ -12,6 +12,7 @@ import '@fontsource/roboto/700.css'
 
 import './styles/tokens.css'
 import './styles/global.css'
+import 'leaflet/dist/leaflet.css'
 
 import { App } from './app/App'
 

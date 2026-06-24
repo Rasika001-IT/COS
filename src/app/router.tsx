@@ -1,7 +1,8 @@
+import { type ReactNode } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { RequireAuth, RequireRole } from './guards'
 import { roleHome, NAV } from './navConfig'
-import { useCurrentUser } from './hooks'
+import { useCurrentUser, useAppSelector } from './hooks'
 import { AppShell } from '@/features/shell/AppShell'
 import { Placeholder } from '@/features/placeholder/Placeholder'
 import { LoginScreen } from '@/features/auth/LoginScreen'
@@ -31,6 +32,18 @@ import { NotificationsScreen } from '@/features/notifications/NotificationsScree
 function RoleIndex() {
   const user = useCurrentUser()
   return <Navigate to={user ? roleHome(user.role) : '/login'} replace />
+}
+
+// Super admin must select an org via impersonation before viewing grievances.
+// If they're already impersonating, their acting role is 'admin' and they pass
+// through normally; otherwise redirect them to the platform screen.
+function GrievancesGuard({ children }: { children: ReactNode }) {
+  const user = useCurrentUser()
+  const impersonating = useAppSelector((s) => s.auth.impersonating)
+  if (user?.role === 'superadmin' && !impersonating) {
+    return <Navigate to="/superadmin" replace />
+  }
+  return <>{children}</>
 }
 
 export function AppRoutes() {
@@ -128,8 +141,8 @@ export function AppRoutes() {
             </RequireRole>
           }
         />
-        <Route path="/grievances" element={<GrievancesScreen />} />
-        <Route path="/grievances/:id" element={<GrievanceDetail />} />
+        <Route path="/grievances" element={<GrievancesGuard><GrievancesScreen /></GrievancesGuard>} />
+        <Route path="/grievances/:id" element={<GrievancesGuard><GrievanceDetail /></GrievancesGuard>} />
         <Route path="/leave" element={<LeaveScreen />} />
         <Route
           path="/payroll"

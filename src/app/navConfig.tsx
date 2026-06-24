@@ -41,7 +41,7 @@ export const NAV: NavItem[] = [
   { to: '/attendance', label: 'Attendance', icon: Clock, roles: ALL, primary: true, implemented: true, module: 'attendance' },
   { to: '/tasks', label: 'Tasks', icon: CheckSquare, roles: ['worker', 'supervisor', 'manager'], primary: true, implemented: true, module: 'tasks' },
   { to: '/projects', label: 'Projects', icon: FolderKanban, roles: ['manager', 'admin', 'superadmin'], implemented: true, module: 'projects' },
-  { to: '/grievances', label: 'Grievances', icon: MessageSquareWarning, roles: ALL, primary: true, implemented: true, module: 'grievances' },
+  { to: '/grievances', label: 'Grievances', icon: MessageSquareWarning, roles: ['admin', 'manager', 'supervisor', 'worker'], primary: true, implemented: true, module: 'grievances' },
   { to: '/leave', label: 'Leave', icon: CalendarOff, roles: ALL, implemented: true, module: 'leave' },
   { to: '/notifications', label: 'Notifications', icon: Bell, roles: ALL, implemented: true, module: 'notifications' },
   { to: '/reports', label: 'Reports', icon: FileBarChart, roles: ['supervisor', 'manager', 'admin', 'superadmin'], implemented: true, module: 'reports' },

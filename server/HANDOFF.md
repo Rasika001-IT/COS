@@ -14,9 +14,12 @@ building the **real backend** in `server/` — Node + Express + Mongoose — to
 `src/api/CONTRACT.md` 1:1, so the frontend's RTK Query slices work unchanged once
 MSW is off.
 
-**Phases A–G are built and verified end-to-end against a real MongoDB Atlas DB +
-real Cloudflare R2 bucket.** Remaining: **H** (deploy to Railway + Vercel), **I**
-(cross-domain refresh cookie), **J** (replace demo seed with real data).
+**Phases A–I are built, deployed, and verified live in production.** Remaining:
+**J** (replace demo seed with real data — deliberately deferred until a real
+client is onboarding).
+
+**Live URLs:** backend `https://cos-production-9f6f.up.railway.app` (Railway,
+root dir `server/`), frontend `https://cos-3yyc.vercel.app` (Vercel).
 
 | Phase | Scope | Status |
 |---|---|---|
@@ -26,8 +29,10 @@ real Cloudflare R2 bucket.** Remaining: **H** (deploy to Railway + Vercel), **I*
 | D | reports (config-driven), master data, report persist, activity-log | ✅ verified on Atlas |
 | E | grievances (anon mask, ≥1-photo, SLA), leave & payroll, notifications, dashboard grievance counts | ✅ verified on Atlas |
 | F | Business Admin + Super Admin writes (incl. impersonation) | ✅ verified on Atlas |
-| **G** | **Cloudflare R2 file uploads + `PhotoPicker` swap** | ✅ **verified live against real R2** |
-| H–J | deploy · cookie · real data | ⬜ **next** |
+| G | Cloudflare R2 file uploads + `PhotoPicker` swap | ✅ verified live against real R2 |
+| **H** | **Deploy — Railway (backend) + Vercel (frontend)** | ✅ **live** |
+| **I** | **Cross-domain refresh cookie** (`Secure; SameSite=None` + exact-origin CORS) | ✅ **verified live** |
+| J | replace demo seed with real data | ⬜ **deferred — last step before a real client onboards** |
 
 ---
 
@@ -223,12 +228,57 @@ the `PhotoPicker`/`uploadsApi` swap.
 > live-verified, but click through it once in the app (Workspace logo, Raise
 > Grievance, Progress Log) before calling Phase G fully done.
 
-### Then H–J (per the runbook)
-- **H — deploy:** Railway (root dir `server/`, env vars, healthcheck) + Vercel
-  (`VITE_API_URL`, `VITE_ENABLE_MSW=false`). Allowlist Railway egress IP in Atlas.
-- **I — cross-domain cookie:** prod cookie must be `Secure; SameSite=None`, CORS
-  `credentials:true` + exact origin. Set `COOKIE_SECURE=true`, `COOKIE_SAMESITE=none`,
-  `CORS_ORIGINS=<vercel domain>`. Test `/auth/refresh` cross-domain before declaring done.
+## 4c. Phases H + I — deployed and verified live
+
+Backend on **Railway** (`https://cos-production-9f6f.up.railway.app`, service
+root dir = `server/`, build via `server/railway.json` → Nixpacks `npm run build`
+→ `npm run start`, healthcheck `/health`). Frontend on **Vercel**
+(`https://cos-3yyc.vercel.app`, root = repo root, `vercel.json` SPA rewrite,
+`VITE_API_URL`=the Railway URL, `VITE_ENABLE_MSW=false`). Prod env vars: fresh
+JWT secrets (not the dev ones), `COOKIE_SECURE=true`, `COOKIE_SAMESITE=none`,
+`CORS_ORIGINS=https://cos-3yyc.vercel.app`, same Atlas `MONGO_URL` as dev, same
+R2 bucket (`cos`) reused for prod. Atlas Network Access: `0.0.0.0/0` (accepted —
+no static Railway IP on the free tier; cluster still gated by creds + TLS).
+
+**Two real deploy bugs hit and fixed:**
+1. Railway's first deploy served the **frontend's** `index.html` instead of the
+   backend — `/health` returned HTML, not JSON. Cause: the service's **Root
+   Directory** wasn't set to `server/`, so Nixpacks built the repo root (the Vite
+   app) instead. Fixed in Railway's dashboard; re-verified `/health` → real JSON
+   and `/auth/me` (no token) → `401 UNAUTHORIZED` JSON.
+2. After the Root Directory fix, login still failed (`401 Invalid email or
+   password`) even though the exact same Atlas URI worked fine locally with the
+   same creds — isolated by running the identical login curl against the local
+   server (same Atlas URI) side-by-side, which succeeded. Root cause: the
+   `MONGO_URL` pasted into Railway's dashboard wasn't byte-identical to
+   `server/.env` (likely the db-name segment or trailing whitespace differed —
+   note `/health` doesn't touch Mongo at all, so a wrong-but-valid Mongo target
+   doesn't show up as a startup crash, it just silently 404s every lookup).
+   Fixed by re-copy-pasting `MONGO_URL` directly from `server/.env` into Railway.
+   **Lesson:** when a route that *should* hit the DB behaves as if data is
+   missing but the app is otherwise healthy, suspect the env var was retyped
+   instead of copy-pasted, not the data itself.
+
+Also found `CORS_ORIGINS` wasn't set on the first pass — `OPTIONS` preflight from
+the Vercel origin returned `204` with no `Access-Control-Allow-Origin` header,
+which would've silently blocked every browser request. Fixed by setting
+`CORS_ORIGINS=https://cos-3yyc.vercel.app` in Railway.
+
+**Verified live, end-to-end, after both fixes:** CORS preflight now echoes the
+Vercel origin; `POST /auth/login` from `Origin: https://cos-3yyc.vercel.app` →
+`200` + `Set-Cookie: cos_refresh=...; HttpOnly; Secure; SameSite=None`; `POST
+/auth/refresh` with that cookie, cross-origin → `200` + cookie rotated; no
+cookie → `401 UNAUTHORIZED`; a real file `POST`ed to `/uploads` on the live
+Railway backend round-tripped through R2 byte-identical. Vite correctly baked
+`VITE_API_URL` into the deployed JS bundle (confirmed by grepping the built
+`assets/*.js` for the Railway URL).
+
+> Not yet done: a real browser session through the deployed Vercel app (demo
+> chip → location prompt → sign-in → click around) — every layer it depends on
+> (CORS, cookie attrs, refresh rotation, R2 upload) is now curl-verified live,
+> but no one has loaded the actual page yet.
+
+### Then J (per the runbook)
 - **J — real data (last):** `seed.ts` is demo-only. For production, seed just a
   Super Admin, then onboard real orgs via the UI. Don't ship the demo seed.
 
